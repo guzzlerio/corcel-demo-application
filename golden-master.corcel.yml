@@ -1,0 +1,21 @@
+---
+  name : Golden Master For Corcel DEMO Application
+  workers : 1
+  waitTime : 0
+  context:
+      vars:
+          corcel_host: localhost
+          corcel_port: 45000
+          httpHeaders:
+              content-Type: application/json
+  jobs:
+    -
+      name : Managing Tickets
+      steps:
+        -
+          name: Create a new ticket
+          action:
+            type : HttpRequest
+            requestTimeout : 150
+            method : POST
+            url : http://$corcel_host:$corcel_port/tickets
